@@ -15,7 +15,7 @@
 
 **An enterprise-grade multi-agent AI platform that autonomously handles the entire B2B revenue pipeline — from lead scoring to CRM sync — without human intervention.**
 
-[Live Demo](#-quick-start) • [Architecture](#-architecture) • [API Docs](#-api-reference) • [Dataset](#-dataset)
+[Demo Video](https://drive.google.com/file/d/1xKVY25qRkr2quzjEXji07cBUhNzDrkrl/view?usp=sharing) • [Architecture](#-architecture) • [API Docs](#-api-reference) • [Dataset](#-dataset)
 
 </div>
 
