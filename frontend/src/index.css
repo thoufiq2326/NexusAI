@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════
+   CSS VARIABLES
+══════════════════════════════════════════ */
+:root {
+  --neon-green: #00ff88;
+  --neon-cyan: #00d4ff;
+  --neon-pink: #ff00ff;
+  --neon-gold: #ffc800;
+  --dark-base: #0a0a0f;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ══════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-base);
+  color: #ffffff;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+* {
+  cursor: none !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 136, 0.2) transparent;
+}
+
+/* ══════════════════════════════════════════
+   SELECTION
+══════════════════════════════════════════ */
+::selection {
+  background: rgba(0, 255, 136, 0.25);
+  color: var(--neon-green);
+}
+
+/* ══════════════════════════════════════════
+   FOCUS
+══════════════════════════════════════════ */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.4);
+}
+
+/* ══════════════════════════════════════════
+   CUSTOM SCROLLBAR (Webkit)
+══════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.4);
+}
+
+/* ══════════════════════════════════════════
+   GRAIN TEXTURE (SVG noise via body::after)
+══════════════════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ══════════════════════════════════════════
+   KEYFRAMES
+══════════════════════════════════════════ */
+@keyframes scan {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0 200px;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+@keyframes dashFlow {
+  from {
+    stroke-dashoffset: 24;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pingRipple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes globeSpin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes agentSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logoPulse {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+  }
+
+  50% {
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.9), 0 0 60px rgba(0, 255, 136, 0.3);
+  }
+}
+
+@keyframes statusPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes powerOn {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ══════════════════════════════════════════
+   CUSTOM CURSOR
+══════════════════════════════════════════ */
+.cursor {
+  width: 10px;
+  height: 10px;
+  background: var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green), 0 0 24px rgba(0, 255, 136, 0.4);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.1s, height 0.1s;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 255, 136, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease-out, width 0.15s, height 0.15s, border-color 0.15s;
+}
+
+.cursor-ring.hovered {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(0, 255, 136, 0.9);
+}
+
+/* ══════════════════════════════════════════
+   RIPPLE BUTTON
+══════════════════════════════════════════ */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.35);
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple 0.6s ease-out forwards;
+}
