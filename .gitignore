@@ -1,12 +1,14 @@
-node_modules/
+# Frontend
 frontend/node_modules/
 frontend/dist/
+
+# Backend & Python
 .env
-backend/.env
 __pycache__/
 *.pyc
 venv/
 nexus.db
-dist/
+
+# OS Files
 .DS_Store
 *.log
